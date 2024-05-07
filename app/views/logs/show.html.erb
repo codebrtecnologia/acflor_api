@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log</title>
+  <style>
+    /* Estilos CSS para formatar o log */
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= Rails.env %> log</h1>
+  <h2>Mostrando as últimas <%= @number_lines %> linhas</h2>
+  <pre><%= raw @log_content %></pre>
+</body>
+</html>

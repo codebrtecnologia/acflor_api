@@ -1,0 +1,227 @@
+{
+    "info": {
+        "_postman_id": "2c421b0a-6d58-4d11-8301-84af897f3bf3",
+        "name": "Courses",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "index",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/courses",
+                    "path": [
+                        "courses"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "course_category_id",
+                            "value": "1",
+                            "disabled": true,
+                            "type": "default"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/courses/1",
+                    "path": [
+                        "courses",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "create",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/courses",
+                    "path": [
+                        "courses"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"course_category_id\": 2,\n  \"name\": \"Corte e Costura\",\n  \"description\": \"Ensina a costurar.\",\n  \"image\": null,\n  \"approval_score\": 10\n}"
+                }
+            }
+        },
+        {
+            "name": "update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/courses/1",
+                    "path": [
+                        "courses",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"course_category_id\": 1,\n  \"name\": \"MS WORD 2\",\n  \"description\": \"Ensina a fazer o cadastro como MEI - Micro Empreendedor Individual.\",\n  \"image\": null,\n  \"approval_score\": 10\n}"
+                }
+            }
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{server}}/courses/1",
+                    "path": [
+                        "courses",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "list_names",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/courses/list_names",
+                    "path": [
+                        "courses",
+                        "list_names"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "course_category_id",
+                            "value": "1",
+                            "type": "default"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

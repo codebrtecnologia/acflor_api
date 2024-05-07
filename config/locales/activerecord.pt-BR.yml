@@ -1,0 +1,32 @@
+pt-BR:
+  activerecord:
+    models:
+      category: "Categoria"
+      public_body: "Órgão"
+      city: "Município"
+
+    attributes:
+      category:
+        name: "nome"
+      public_body:
+        name: "nome"
+      city:
+        name: "nome"
+
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              blank: "deve ser informado"
+        public_body:
+          attributes:
+            name:
+              blank: "deve ser informado"
+        city:
+          attributes:
+            name:
+              blank: "deve ser informado"
+
+    exceptions:
+      not_found: "Não foi possível localizar %{class_name} com id(s): %{id}"

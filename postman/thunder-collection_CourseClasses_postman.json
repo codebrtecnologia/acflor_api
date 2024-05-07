@@ -1,0 +1,206 @@
+{
+    "info": {
+        "_postman_id": "c466da4f-ebb7-495e-a8f1-4c7d111dc021",
+        "name": "CourseClasses",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "index",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/course_classes",
+                    "path": [
+                        "course_classes"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/course_classes/1",
+                    "path": [
+                        "course_classes",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "create",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/course_classes",
+                    "path": [
+                        "course_classes"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"course_id\": 1,\n  \"name\": \"TURMA002\",\n  \"teacher_id\": null,\n  \"phase\": 0\n}"
+                }
+            }
+        },
+        {
+            "name": "update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/course_classes/1",
+                    "path": [
+                        "course_classes",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"course_id\": 1,\n  \"name\": \"TURMA001\",\n  \"teacher_id\": 1,\n  \"phase\": 0\n}"
+                }
+            }
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{server}}/course_classes/1",
+                    "path": [
+                        "course_classes",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "list_names",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/course_classes/list_names",
+                    "path": [
+                        "course_classes",
+                        "list_names"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        }
+    ]
+}

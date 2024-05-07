@@ -1,0 +1,176 @@
+{
+    "info": {
+        "_postman_id": "6048af23-8395-4a1f-a3f5-b4ebb5cc4090",
+        "name": "Inscriptions",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "index",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/inscriptions",
+                    "path": [
+                        "inscriptions"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/inscriptions/1",
+                    "path": [
+                        "inscriptions",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "create",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/inscriptions",
+                    "path": [
+                        "inscriptions"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"person_id\": 1,\n  \"course_class_id\": 34,\n  \"date_inscription\": \"{{date}}\",\n  \"time_inscription\": \"{{time}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/inscriptions/1",
+                    "path": [
+                        "inscriptions",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"person_id\": 3,\n  \"course_class_id\": 1,\n  \"date_inscription\": \"{{date}}\",\n  \"time_inscription\": \"{{time}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{server}}/inscriptions/1",
+                    "path": [
+                        "inscriptions",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        }
+    ]
+}

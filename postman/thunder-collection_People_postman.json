@@ -1,0 +1,405 @@
+{
+    "info": {
+        "_postman_id": "f024f57c-838f-4eaf-acb8-a5240cea0edc",
+        "name": "People",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "index",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/people",
+                    "path": [
+                        "people"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/people/1",
+                    "path": [
+                        "people",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "create",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/people",
+                    "path": [
+                        "people"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"ADMIN\",\n  \"social_name\": \"ADM\",\n  \"birth_date \": \"2000-12-28\",\n  \"number_children\": 2,\n  \"cpf\": \"111.222.333.444-55\",\n  \"rg\": \"20012345678\",\n  \"empowered\": true,\n  \"phone\": \"85-999999999\",\n  \"email\": \"admin@admin.com\",\n  \"neighborhood_id\": 1,\n  \"address_street\": \"RUA 123\",\n  \"address_number\": \"10\",\n  \"address_complement\": \"NA\",\n  \"address_zip_code\": \"60000-999\",\n  \"civil_status_id\": 2\n}"
+                }
+            }
+        },
+        {
+            "name": "update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/people/3",
+                    "path": [
+                        "people",
+                        "3"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"M DE MARIA DAS GRAÇAS SILVA\",\n  \"social_name\": \"GRAÇA\",\n  \"birth_date \": \"2000-12-28\",\n  \"number_children\": 2,\n  \"cpf\": \"111.222.333.444-55\",\n  \"rg\": \"20012345678\",\n  \"empowered\": false,\n  \"phone\": \"85-999999999\",\n  \"email\": \"maria@mmm.com\",\n  \"neighborhood_id\": 1,\n  \"address_street\": \"RUA 123\",\n  \"address_number\": \"10\",\n  \"address_complement\": \"NA\",\n  \"address_zip_code\": \"60000-999\",\n  \"civil_status_id\": 2\n}"
+                }
+            }
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{server}}/people/21",
+                    "path": [
+                        "people",
+                        "21"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "registration",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/people/registration",
+                    "path": [
+                        "people",
+                        "registration"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"{{name2}}\",\n  \"email\": \"{{email2}}\",\n  \"password\": \"{{password2}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "setmyprofile",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/people/setmyprofile.json",
+                    "path": [
+                        "people",
+                        "setmyprofile.json"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    },
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"User Test\",\n  \"social_name\": null,\n  \"birth_date\": null,\n  \"number_children\": null,\n  \"cpf\": null,\n  \"rg\": null,\n  \"phone\": null,\n  \"email\": \"user2@teste.com\",\n  \"neighborhood_id\": 1,\n  \"address_street\": null,\n  \"address_number\": null,\n  \"address_complement\": null,\n  \"address_zip_code\": null,\n  \"civil_status_id\": null\n}"
+                }
+            }
+        },
+        {
+            "name": "set_email",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/people/set_email/29",
+                    "path": [
+                        "people",
+                        "set_email",
+                        "29"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"email\": \"user2@teste.com\"\n}"
+                }
+            }
+        },
+        {
+            "name": "myphoto",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/people/myphoto",
+                    "path": [
+                        "people",
+                        "myphoto"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "photo",
+                            "value": "a",
+                            "disabled": true,
+                            "type": "default"
+                        },
+                        {
+                            "key": "photo",
+                            "src": "g:\\Meu Drive\\ViceGov\\EMPODERA\\Telas APP_2021\\12-Menu Minhas Trilhas-Visualização de curso-5-1.png",
+                            "type": "file"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "list_names",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/people/list_names",
+                    "path": [
+                        "people",
+                        "list_names"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "getmyprofile",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/people/getmyprofile",
+                    "path": [
+                        "people",
+                        "getmyprofile"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        }
+    ]
+}

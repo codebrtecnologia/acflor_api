@@ -1,0 +1,296 @@
+{
+    "info": {
+        "_postman_id": "b96c3154-e8ac-4253-bbe5-c47e787450eb",
+        "name": "LessonViews",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "index",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/lesson_views",
+                    "path": [
+                        "lesson_views"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/lesson_views/1",
+                    "path": [
+                        "lesson_views",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "create",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/lesson_views",
+                    "path": [
+                        "lesson_views"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"person_id\": 1,\n  \"lesson_id\": 3,\n  \"date_view\": \"{{date}}\",\n  \"time_view\": \"{{time}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "{{server}}/lesson_views/1",
+                    "path": [
+                        "lesson_views",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"person_id\": 3,\n  \"lesson_id\": 1,\n  \"date_view\": \"{{date}}\",\n  \"time_view\": \"{{time}}\"\n}"
+                }
+            }
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{server}}/lesson_views/1",
+                    "path": [
+                        "lesson_views",
+                        "1"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "getmyviews",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/lesson_views/getmyviews",
+                    "path": [
+                        "lesson_views",
+                        "getmyviews"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "lesson_id",
+                            "value": "1",
+                            "type": "default"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "setmyview",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "{{server}}/lesson_views/setmyview",
+                    "path": [
+                        "lesson_views",
+                        "setmyview"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"lesson_id\": 4\n}"
+                }
+            }
+        },
+        {
+            "name": "getmycourses",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{server}}/lesson_views/getmycourses",
+                    "path": [
+                        "lesson_views",
+                        "getmycourses"
+                    ],
+                    "host": [
+                        "{{server}}"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "access-token",
+                        "value": "{{access-token}}"
+                    },
+                    {
+                        "key": "uid",
+                        "value": "{{uid}}"
+                    },
+                    {
+                        "key": "client",
+                        "value": "{{client}}"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "course_category_id",
+                            "value": "1",
+                            "disabled": true,
+                            "type": "default"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

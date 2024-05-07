@@ -1,0 +1,34 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  port: 5432
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: postgres
+  database: empodera_api_dev
+  schema_search_path: public
+  database_tasks: true
+
+production:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: postgres
+  database: empodera_api_prod
+  schema_search_path: public
+  database_tasks: true
+
+test:
+  <<: *default
+  host: localhost
+  username: postgres
+  password: postgres
+  database: empodera_api_test
+  schema_search_path: public
+  database_tasks: true

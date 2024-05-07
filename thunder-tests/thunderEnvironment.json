@@ -1,0 +1,73 @@
+[
+  {
+    "_id": "5c9b02d1-12c3-4483-b03a-bcf49ea490f5",
+    "name": "(Global Env)",
+    "default": false,
+    "global": true,
+    "sortNum": -2,
+    "created": "2023-03-28T11:19:22.520Z",
+    "modified": "2023-03-28T11:19:22.520Z",
+    "data": [
+      {
+        "name": "server",
+        "value": "https://hgempoderaapi.vicegov.ce.gov.br/"
+      },
+      {
+        "name": "name_user",
+        "value": "Admin"
+      },
+      {
+        "name": "email",
+        "value": "admin@admin.com"
+      },
+      {
+        "name": "password",
+        "value": "12345678"
+      },
+      {
+        "name": "access-token",
+        "value": "UEnaq0oEMEuFwEflTg47LA"
+      },
+      {
+        "name": "client",
+        "value": "cA2pyYUGswZK8OGS0RkPiQ"
+      },
+      {
+        "name": "uid",
+        "value": "admin@admin.com"
+      },
+      {
+        "name": "date",
+        "value": "2023-03-28"
+      },
+      {
+        "name": "time",
+        "value": "13:30:55"
+      },
+      {
+        "name": "name2",
+        "value": "User Test"
+      },
+      {
+        "name": "email2",
+        "value": "user2@teste.com"
+      },
+      {
+        "name": "password2",
+        "value": "12345687"
+      },
+      {
+        "name": "server-local",
+        "value": "http://localhost:3005/"
+      },
+      {
+        "name": "server-hg",
+        "value": "http://hgempoderaapi.vicegov.ce.gov.br/"
+      },
+      {
+        "name": "server-prod",
+        "value": "http://empoderaapi.vicegov.ce.gov.br/"
+      }
+    ]
+  }
+]

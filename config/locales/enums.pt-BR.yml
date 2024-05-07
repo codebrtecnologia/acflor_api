@@ -1,0 +1,6 @@
+pt-BR:
+  enums:
+    participant_presence:
+      relationship_degree:
+        wife: "Esposa"
+

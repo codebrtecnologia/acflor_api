@@ -1,0 +1,19 @@
+pt-BR:
+  category:
+    created_success: "Categoria cadastrada com sucesso!"
+    created_error: "Erro no cadastro de categoria."
+    updated_success: "Categoria atualizada com sucesso!"
+    not_found: "Categoria não encontrada"
+    successful_destroyed: "Categoria excluída com sucesso!"
+  public_body:
+    created_success: "Órgão cadastrado com sucesso!"
+    created_error: "Erro no cadastro de órgão."
+    updated_success: "Órgão atualizado com sucesso!"
+    not_found: "Órgão não encontrado"
+    successful_destroyed: "Órgão excluído com sucesso!"
+  city:
+    created_success: "Município cadastrado com sucesso!"
+    created_error: "Erro no cadastro do município."
+    updated_success: "Município atualizado com sucesso!"
+    not_found: "Município não encontrado"
+    successful_destroyed: "Município excluído com sucesso!"

@@ -1,0 +1,10 @@
+pt-BR:
+  routes:
+    ability_profiles: perfis
+    ability_resources: recursos
+    ability_permissions: permissoes
+    categories: categorias
+    public_bodies: orgaos
+    cities: municipios
+
+
