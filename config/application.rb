@@ -34,7 +34,6 @@ module IpeApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.exceptions_app = self.routes
 
     # This also configures session_options for use below
     config.session_store :cookie_store, key: '_ipe_api_session', expire_after: 14.days

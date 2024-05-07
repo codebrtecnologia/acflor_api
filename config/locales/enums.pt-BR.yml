@@ -1,6 +1,8 @@
 pt-BR:
   enums:
-    participant_presence:
-      relationship_degree:
-        wife: "Esposa"
+    holiday:
+      holiday_type:
+        municipal_holiday: "Municipal"
+        state_holiday: "Estadual"
+        federal_holiday: "Federal"
 

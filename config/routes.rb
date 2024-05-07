@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :ability_resources
     resources :categories
     resources :cities
+    resources :holidays, defaults: {format: :json} do
+      collection do
+        get :holiday_types
+      end
+    end
     resources :public_bodies
     resources :users do
       collection do

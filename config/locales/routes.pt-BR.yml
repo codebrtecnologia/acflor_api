@@ -6,5 +6,7 @@ pt-BR:
     categories: categorias
     public_bodies: orgaos
     cities: municipios
+    holidays: feriados
+    holiday_types: tipos_feriados
 
 

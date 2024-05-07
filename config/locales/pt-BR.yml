@@ -17,3 +17,9 @@ pt-BR:
     updated_success: "Município atualizado com sucesso!"
     not_found: "Município não encontrado"
     successful_destroyed: "Município excluído com sucesso!"
+  holiday:
+    created_success: "Feriado cadastrado com sucesso!"
+    created_error: "Erro no cadastro do feriado."
+    updated_success: "Feriado atualizado com sucesso!"
+    not_found: "Feriado não encontrado"
+    successful_destroyed: "Feriado excluído com sucesso!"
