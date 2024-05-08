@@ -29,3 +29,9 @@ pt-BR:
     updated_success: "Pessoa atualizada com sucesso!"
     not_found: "Pessoa não encontrada"
     successful_destroyed: "Pessoa excluída com sucesso!"
+  agenda_request:
+    created_success: "Solicitação de Agenda cadastrada com sucesso!"
+    created_error: "Erro no cadastro de solicitação de agenda."
+    updated_success: "Solicitação de Agenda atualizada com sucesso!"
+    not_found: "Solicitação de Agenda não encontrada"
+    successful_destroyed: "Solicitação de Agenda excluída com sucesso!"

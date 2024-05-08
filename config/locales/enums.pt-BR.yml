@@ -5,4 +5,7 @@ pt-BR:
         municipal_holiday: "Municipal"
         state_holiday: "Estadual"
         federal_holiday: "Federal"
-
+    agenda_request:
+      agenda_request_status:
+        not_approved: "Não aprovado"
+        approved: "Aprovado"

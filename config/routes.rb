@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resources :ability_permissions
     resources :ability_profiles
     resources :ability_resources
+    resources :agenda_requests, defaults: {format: :json} do
+      collection do
+        get :agenda_request_statuses
+      end
+    end
     resources :categories
     resources :cities
     resources :holidays, defaults: {format: :json} do

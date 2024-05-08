@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable, :recoverable
   include DeviseTokenAuth::Concerns::User
 
-  belongs_to :person, optional: true
+  #RELATIONSHIPS
+
+  # belongs_to :person, optional: true
   belongs_to :ability_profile, optional: true
+
+  has_many :agenda_requests, foreign_key: 'requesting_user_id', dependent: :restrict_with_exception
+  has_many :agenda_requests, foreign_key: 'approving_user_id', dependent: :restrict_with_exception
 
   validates :name, presence: true
 end

@@ -6,6 +6,7 @@ pt-BR:
       city: "Município"
       holiday: "Feriado"
       person: "Pessoa"
+      agenda_request: "Solicitação de Agenda"
 
     attributes:
       category:
@@ -28,6 +29,19 @@ pt-BR:
         category: "categoria"
         public_body: "órgão"
         active: "ativo"
+      agenda_request:
+        cellphone_number: "Telefone"
+        email: "email"
+        local: "local"
+        subject: "assunto"
+        observations: "observações"
+        infos: "informações"
+        status: "status"
+        city: "município"
+        requester: "solicitante"
+        requesting_user: "usuário solicitante"
+        approving_user: "usuário aprovador"
+        approval_date: "data de aprovação"
 
     errors:
       models:
@@ -59,6 +73,18 @@ pt-BR:
               blank: "deve ser informado"
             active:
               inclusion: "os valores aceitos são apenas 'true' ou 'false'"
+        agenda_request:
+          attributes:
+            cellphone_number:
+              blank: "deve ser informado"
+            email:
+              blank: "deve ser informado"
+            status:
+              blank: "deve ser informado"
+            requester:
+              blank: "deve ser informado"
+            requesting_user:
+              blank: "deve ser informado"
 
     exceptions:
       not_found: "Não foi possível localizar %{class_name} com id(s): %{id}"

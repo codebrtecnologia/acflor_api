@@ -9,5 +9,7 @@ pt-BR:
     holidays: feriados
     holiday_types: tipos_feriados
     people: pessoas
+    agenda_requests: solicitacoes_agenda
+    agenda_request_statuses: status_solicitacoes_agenda
 
 
