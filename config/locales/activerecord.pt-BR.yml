@@ -5,6 +5,7 @@ pt-BR:
       public_body: "Órgão"
       city: "Município"
       holiday: "Feriado"
+      person: "Pessoa"
 
     attributes:
       category:
@@ -17,6 +18,16 @@ pt-BR:
         date: "data"
         description: "descrição"
         holiday_type: "tipo"
+      person:
+        name: "nome"
+        position: "cargo"
+        telephone: "telefone"
+        cellphone_number: "celular"
+        email: "email"
+        alternative_email: "email alternativo"
+        category: "categoria"
+        public_body: "órgão"
+        active: "ativo"
 
     errors:
       models:
@@ -40,6 +51,14 @@ pt-BR:
               blank: "deve ser informado"
             holiday_type:
               blank: "deve ser informado"
+        person:
+          attributes:
+            name:
+              blank: "deve ser informado"
+            email:
+              blank: "deve ser informado"
+            active:
+              inclusion: "os valores aceitos são apenas 'true' ou 'false'"
 
     exceptions:
       not_found: "Não foi possível localizar %{class_name} com id(s): %{id}"

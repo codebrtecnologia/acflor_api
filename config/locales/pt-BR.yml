@@ -23,3 +23,9 @@ pt-BR:
     updated_success: "Feriado atualizado com sucesso!"
     not_found: "Feriado não encontrado"
     successful_destroyed: "Feriado excluído com sucesso!"
+  person:
+    created_success: "Pessoa cadastrada com sucesso!"
+    created_error: "Erro no cadastro de pessoa."
+    updated_success: "Pessoa atualizada com sucesso!"
+    not_found: "Pessoa não encontrada"
+    successful_destroyed: "Pessoa excluída com sucesso!"

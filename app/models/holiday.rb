@@ -1,4 +1,5 @@
 class Holiday < ApplicationRecord
+  include Filterable
   acts_as_paranoid
 
   #VALIDATIONS

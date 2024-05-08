@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get :holiday_types
       end
     end
+    resources :people
     resources :public_bodies
     resources :users do
       collection do

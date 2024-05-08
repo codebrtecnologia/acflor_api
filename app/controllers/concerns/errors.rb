@@ -26,10 +26,9 @@ module Errors
 
     # TRATA EXCECAO GERAL
     def handle_exception(exception, resource = nil, id = nil, errors = [])
-      puts "exception -> #{exception}"
       case exception
       when ActionController::ParameterMissing
-        render json: handle_unprocessable_entity(errors), status: :bad_request
+        render json: handle_parameter_missing_exception, status: :bad_request
       when ActiveRecord::RecordNotFound
         render json: handle_resource_not_found(resource: resource, id: id), status: :not_found
       when ActiveRecord::DeleteRestrictionError
@@ -51,6 +50,17 @@ module Errors
         userMessage: MSG_DADOS_INVALIDOS,
         timestamp: Time.now.iso8601,
         fields: format_error_fields(errors)
+      }
+    end
+
+    def handle_parameter_missing_exception
+      {
+        status: 400,
+        type: ProblemType::DADOS_INVALIDOS.uri,
+        title: ProblemType::DADOS_INVALIDOS.title,
+        detail: MSG_DADOS_INVALIDOS,
+        userMessage: MSG_DADOS_INVALIDOS,
+        timestamp: Time.now.iso8601
       }
     end
   
@@ -98,7 +108,11 @@ module Errors
       }
     end
 
+    private
+
     def format_error_fields(errors)
+      return [] unless errors&.any?
+
       model_name = errors.instance_variable_get(:@base).class.model_name.param_key
       error_fields = []
 
