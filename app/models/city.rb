@@ -2,6 +2,10 @@ class City < ApplicationRecord
   include Filterable
   acts_as_paranoid
 
+  #RELATIONSHIPS
+  has_many :events, dependent: :restrict_with_exception
+  has_many :agenda_requests, dependent: :restrict_with_exception
+
   #VALIDATIONS
   validates :name, presence: true
 

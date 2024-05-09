@@ -11,8 +11,15 @@ Rails.application.routes.draw do
         put '/:id/aprovar_solicitacao', to: 'agenda_requests#approve_request'
       end
     end
+    resources :attendances
     resources :categories
     resources :cities
+    resources :events, defaults: {format: :json} do
+      collection do
+        put '/:id/ativar_evento', to: 'events#activate_event'
+        put '/:id/inativar_evento', to: 'events#disable_event'
+      end
+    end
     resources :holidays, defaults: {format: :json} do
       collection do
         get :holiday_types

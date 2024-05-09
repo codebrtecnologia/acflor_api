@@ -35,3 +35,15 @@ pt-BR:
     updated_success: "Solicitação de Agenda atualizada com sucesso!"
     not_found: "Solicitação de Agenda não encontrada"
     successful_destroyed: "Solicitação de Agenda excluída com sucesso!"
+  event:
+    created_success: "Evento cadastrado com sucesso!"
+    created_error: "Erro no cadastro do evento."
+    updated_success: "Evento atualizado com sucesso!"
+    not_found: "Evento não encontrado"
+    successful_destroyed: "Evento excluído com sucesso!"
+  attendance:
+    created_success: "Participante cadastrado com sucesso!"
+    created_error: "Erro no cadastro do participante."
+    updated_success: "Participante atualizado com sucesso!"
+    not_found: "Participante não encontrado"
+    successful_destroyed: "Participante excluído com sucesso!"

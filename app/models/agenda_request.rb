@@ -60,6 +60,8 @@ class AgendaRequest < ApplicationRecord
     end
   end
 
+  private
+
   def set_approval_date(date)
     if date
       update(approval_date: date)

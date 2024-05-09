@@ -21,3 +21,7 @@ AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 
 ability_resource = AbilityResource.find_by(name: 'agenda_requests')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'statuses')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'approve_request')
+
+ability_resource = AbilityResource.find_by(name: 'events')
+AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'activate_event')
+AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'disable_event')

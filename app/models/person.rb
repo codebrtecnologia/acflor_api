@@ -6,6 +6,9 @@ class Person < ApplicationRecord
   belongs_to :category, optional: true
   belongs_to :public_body, optional: true
 
+  has_many :attendances
+  has_many :events, through: :attendances
+
   has_many :agenda_requests, foreign_key: 'requester_id', dependent: :restrict_with_exception
   has_many :agenda_requests, foreign_key: 'requested_id', dependent: :restrict_with_exception
 

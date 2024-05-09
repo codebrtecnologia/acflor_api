@@ -34,6 +34,8 @@ end
 
 "----------------------------------------------------------------------------"
 
+puts 'Admin User 2>>>'
+
 if !User.find_by(email: email_admin_teste2)
   if User.create(
     name: name_admin_teste2,

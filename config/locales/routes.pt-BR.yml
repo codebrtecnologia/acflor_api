@@ -11,5 +11,7 @@ pt-BR:
     people: pessoas
     agenda_requests: solicitacoes_agenda
     statuses: status
+    events: eventos
+    attendances: participantes
 
 

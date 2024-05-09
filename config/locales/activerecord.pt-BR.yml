@@ -7,6 +7,8 @@ pt-BR:
       holiday: "Feriado"
       person: "Pessoa"
       agenda_request: "Solicitação de Agenda"
+      event: "Evento"
+      attendance: "Participante"
 
     attributes:
       category:
@@ -30,7 +32,7 @@ pt-BR:
         public_body: "órgão"
         active: "ativo"
       agenda_request:
-        cellphone_number: "Telefone"
+        cellphone_number: "telefone"
         email: "email"
         local: "local"
         subject: "assunto"
@@ -39,10 +41,30 @@ pt-BR:
         status: "status"
         city: "município"
         requester: "solicitante"
+        requested: "solicitado"
         requesting_user: "usuário solicitante"
         approving_user: "usuário aprovador"
         approval_date: "data de aprovação"
         base: "outro"
+      event:
+        name: "nome"
+        initial_date: "data inicial"
+        final_date: "data final"
+        observations: "observações"
+        infos: "informações"
+        local: "local"
+        city: "cidade"
+        agenda_request: "solicitação de agenda"
+        user: "usuário"
+        active: "ativo"
+      attendance:
+        event: "evento"
+        person: "pessoa"
+        confirmed_presence: "presença confirmada"
+        confirmation_date: "data da confirmação"
+        attended_the_event: "compareceu ao evento"
+        role: "função"
+        observations: "observações"
 
     errors:
       models:
@@ -86,6 +108,20 @@ pt-BR:
               blank: "deve ser informado"
             requesting_user:
               blank: "deve ser informado"
+        event:
+          attributes:
+            name:
+              blank: "deve ser informado"
+            initial_date:
+              blank: "deve ser informado"
+            final_date:
+              blank: "deve ser informado"
+            active:
+              inclusion: "os valores aceitos são apenas 'true' ou 'false'"
+        attendance:
+          attributes:
+            confirmed_presence:
+              inclusion: "os valores aceitos são apenas 'true' ou 'false'"
 
     exceptions:
       not_found: "Não foi possível localizar %{class_name} com id(s): %{id}"
