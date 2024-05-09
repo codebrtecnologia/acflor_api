@@ -1,10 +1,10 @@
 class AgendaRequestsController < ApplicationController
-  before_action :set_agenda_request, only: %i[ show update destroy ]
+  before_action :set_agenda_request, only: %i[ show update destroy approve_request]
 
   def index
     load_agenda_requests
 
-    @holidays_before_paginate = @agenda_requests.size
+    @agenda_requests_before_paginate = @agenda_requests.size
     @agenda_requests = @agenda_requests.then(&paginate)
     @page_no = page_no
     render(template: "agenda_requests/index", formats: :json)
@@ -55,17 +55,30 @@ class AgendaRequestsController < ApplicationController
     end
   end
 
-  def agenda_request_statuses
-    agenda_request_status = AgendaRequest.agenda_request_statuses.map do |agenda_request_status|
-      { id: agenda_request_status.last, name: I18n.t("enums.agenda_request.agenda_request_status")[agenda_request_status.first.to_sym] }
+  def approve_request
+    begin
+      if @agenda_request.approve(current_user)
+        head :no_content
+      else
+        render json: handle_unprocessable_entity(@agenda_request.errors), status: :unprocessable_entity
+      end
+    rescue => e
+      handle_exception(e)
+    end
+  end
+
+  def statuses
+    status = AgendaRequest.statuses.map do |status|
+      { id: status.last, name: I18n.t("enums.agenda_request.status")[status.first.to_sym] }
     end
 
-    render json: { agenda_request_status: agenda_request_status.as_json }, status: 200
+    render json: { status: status.as_json }, status: 200
   end
 
   private
 
-    FILTER_PARAMS = [:local, :requester_id, :requested_id, :city_id, :agenda_request_status]
+    FILTER_PARAMS = [:local, :requester_id, :requested_id, :requesting_user_id, :approving_user_id,
+                     :city_id, :status]
 
     def load_agenda_requests
       @agenda_requests = AgendaRequest.filter(params.slice(*FILTER_PARAMS)).order("created_at")

@@ -6,6 +6,6 @@ pt-BR:
         state_holiday: "Estadual"
         federal_holiday: "Federal"
     agenda_request:
-      agenda_request_status:
+      status:
         not_approved: "Não aprovado"
         approved: "Aprovado"

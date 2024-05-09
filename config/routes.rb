@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :ability_resources
     resources :agenda_requests, defaults: {format: :json} do
       collection do
-        get :agenda_request_statuses
+        get :statuses
+        put '/:id/aprovar_solicitacao', to: 'agenda_requests#approve_request'
       end
     end
     resources :categories

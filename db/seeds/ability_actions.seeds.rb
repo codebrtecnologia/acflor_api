@@ -17,3 +17,7 @@ AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 
 
 ability_resource = AbilityResource.find_by(name: 'holidays')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'holiday_types')
+
+ability_resource = AbilityResource.find_by(name: 'agenda_requests')
+AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'statuses')
+AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'approve_request')

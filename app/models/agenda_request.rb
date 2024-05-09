@@ -10,13 +10,14 @@ class AgendaRequest < ApplicationRecord
   belongs_to :approving_user, optional: true, class_name: 'User'
 
   #ENUMS
-  enum agenda_request_status: {
+  enum status: {
     not_approved: 1,
     approved: 2
-  }, _prefix: :agenda_request_status
+  }, _prefix: :status
 
   #VALIDATIONS
-  validates :cellphone_number, :email, :status, :requester, presence: true
+  validates :cellphone_number, :email, :status, :requester, :requested,
+            :requesting_user, presence: true
 
   #SCOPES
   scope :filter_by_local, -> (local) {
@@ -31,12 +32,44 @@ class AgendaRequest < ApplicationRecord
     where("requested_id" => requested_id)
   }
 
+  scope :filter_by_requesting_user_id, -> (requesting_user_id) {
+    where("requesting_user_id" => requesting_user_id)
+  }
+
+  scope :filter_by_approving_user_id, -> (approving_user_id) {
+    where("approving_user_id" => approving_user_id)
+  }
+
   scope :filter_by_city_id, -> (city_id) {
     where("city_id" => city_id)
   }
 
-  scope :filter_by_agenda_request_status, -> (agenda_request_status) {
-    where("status" => agenda_request_status)
+  scope :filter_by_status, -> (status) {
+    where("status" => status)
   }
+
+  #CUSTOM METHODS
+  def approve(user)
+    if status != "approved"
+      update(status: 2)
+      set_approving_user(user)
+      set_approval_date(Date.today)
+    else
+      errors.add(:base, "Solicitação de agenda já foi aprovada")
+      false
+    end
+  end
+
+  def set_approval_date(date)
+    if date
+      update(approval_date: date)
+    end
+  end
+
+  def set_approving_user(user)
+    if user
+      update(approving_user: user)
+    end
+  end
 
 end

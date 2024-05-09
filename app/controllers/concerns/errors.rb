@@ -26,6 +26,7 @@ module Errors
 
     # TRATA EXCECAO GERAL
     def handle_exception(exception, resource = nil, id = nil, errors = [])
+      puts exception
       case exception
       when ActionController::ParameterMissing
         render json: handle_parameter_missing_exception, status: :bad_request

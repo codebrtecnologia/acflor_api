@@ -42,6 +42,7 @@ pt-BR:
         requesting_user: "usuário solicitante"
         approving_user: "usuário aprovador"
         approval_date: "data de aprovação"
+        base: "outro"
 
     errors:
       models:
