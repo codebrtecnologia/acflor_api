@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  include Errors
+  # include ApiException::Handler
   include Pagination
   include Filterable
 

@@ -26,20 +26,18 @@ module Errors
 
     # TRATA EXCECAO GERAL
     def handle_exception(exception, resource = nil, id = nil, errors = [])
-      puts exception
+      puts "EXCEPTION ==> #{exception}"
       case exception
       when ActionController::ParameterMissing
         render json: handle_parameter_missing_exception, status: :bad_request
       when ActiveRecord::RecordNotFound
-        render json: handle_resource_not_found(resource: resource, id: id), status: :not_found
+        render json: handle_resource_not_found(e: exception), status: :not_found
       when ActiveRecord::DeleteRestrictionError
         render json: handle_deletion_restriction, status: :conflict
       else
         render json: handle_generic_error, status: :internal_server_error
       end
     end
-
-    private
 
     # EXCECOES ESPECIFICAS
     def handle_unprocessable_entity(errors)
@@ -64,16 +62,19 @@ module Errors
         timestamp: Time.now.iso8601
       }
     end
-  
-    def handle_resource_not_found(resource:, id:)
-      {
+
+    def handle_resource_not_found(exception)
+      resource_name = I18n.t("activerecord.models.#{exception.model.downcase}")
+      resource_id = exception.id
+
+      render json: {
         status: 404,
         type: ProblemType::RECURSO_NAO_ENCONTRADO.uri,
         title: ProblemType::RECURSO_NAO_ENCONTRADO.title,
-        detail: "Não foi encontrado um recurso '#{resource.capitalize}' com o código #{id}",
-        userMessage: "Não foi encontrado um recurso '#{resource.capitalize}' com o código #{id}",
+        detail: "Não foi encontrado um recurso '#{resource_name}' com o código #{resource_id}",
+        userMessage: "Não foi encontrado um #{resource_name} com o código #{resource_id}",
         timestamp: Time.now.iso8601
-      }
+      }, status: 404
     end
   
     def handle_deletion_restriction

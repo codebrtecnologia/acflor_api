@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show update destroy activate_event disable_event]
+  before_action :set_event, only: %i[ show update destroy activate_event disable_event get_all_attendances_by_event]
 
   def index
     load_events
@@ -16,43 +16,30 @@ class EventsController < ApplicationController
   end
 
   def create
-    begin
-      @event = Event.new(event_params)
+    @event = Event.new(event_params)
 
-      if @event.save
-        associate_people_with_event(@event, params[:people_params])
-        render json: { status: "success", data: @event }, status: 201
-      else
-        render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
-      end
-    rescue => e
-      handle_exception(e)
+    if @event.save
+      render json: { status: "success", data: @event }, status: 201
     end
   end
 
   def update
-    begin
-      if @event.update(event_params)
-        render json: { status: "success", data: @event }
-      else
-        render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
-      end
-    rescue => e
-      handle_exception(e)
+    if @event.update(event_params)
+      render json: { status: "success", data: @event }
     end
   end
 
   def destroy
-    event = Holiday.find_by(id: params[:id])
+    begin
+      @events = Event.find(params[:id])
 
-    if event
-      begin
-        if event.destroy
-          render json: { message: I18n.t("event.successful_destroyed") }, status: 204
-        end
-      rescue => e
-        handle_exception(e)
+      if @events.destroy
+        render json: { message: I18n.t("event.successful_destroyed") }, status: 204
       end
+    rescue ActiveRecord::RecordNotFound => e
+      handle_resource_not_found(e)
+    rescue => e
+      handle_exception(e)
     end
   end
 
@@ -63,6 +50,8 @@ class EventsController < ApplicationController
       else
         render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
       end
+    rescue ActiveRecord::RecordNotFound => e
+      handle_resource_not_found(e)
     rescue => e
       handle_exception(e)
     end
@@ -75,6 +64,54 @@ class EventsController < ApplicationController
       else
         render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
       end
+    rescue ActiveRecord::RecordNotFound => e
+      handle_resource_not_found(e)
+    rescue => e
+      handle_exception(e)
+    end
+  end
+
+  def get_all_attendances_by_event
+    @events = Event.find(params[:id])
+
+    @events_attendances_before_paginate = @events.attendances.size
+    @events_attendances = @events.attendances.then(&paginate)
+    @page_no = page_no
+
+    render(template: "events/index_events_attendances", formats: :json)
+  end
+
+  def show_attendance_by_event
+    begin
+      @events = Event.find(params[:id])
+      @events_attendance = @events.attendances.find(params[:attendance_id])
+
+      render(template: "events/show_events_attendance", formats: :json)
+    rescue ActiveRecord::RecordNotFound => e
+      handle_resource_not_found(e)
+    rescue => e
+      handle_exception(e)
+    end
+  end
+
+  def get_all_event_bodies_by_event
+    @events = Event.find(params[:id])
+
+    @event_bodies_before_paginate = @events.event_bodies.size
+    @event_bodies = @events.event_bodies.then(&paginate)
+    @page_no = page_no
+
+    render(template: "events/index_event_bodies", formats: :json)
+  end
+
+  def show_event_body_by_event
+    begin
+      @events = Event.find(params[:id])
+      @event_body = @events.event_bodies.find(params[:event_body_id])
+
+      render(template: "events/show_event_body", formats: :json)
+    rescue ActiveRecord::RecordNotFound => e
+      handle_resource_not_found(e)
     rescue => e
       handle_exception(e)
     end
@@ -109,18 +146,21 @@ class EventsController < ApplicationController
               :agenda_request_id,
               :user_id,
               :active,
-              :people_params
+              attendances_attributes: [
+                :id,
+                :event_id,
+                :person_id,
+                :confirmed_presence,
+                :confirmation_date,
+                :attended_the_event,
+                :role,
+                :observations
+              ],
+              event_bodies_attributes: [
+                :id,
+                :event_id,
+                :public_body_id
+              ]
             )
-    end
-
-    def associate_people_with_event(event, people_params)
-      return if people_params.blank?
-
-      people_params.each do |person_params|
-        person_id = person_params[:id]
-        person = Person.find(person_id)
-        Attendance.create(event: event, person: person, role: person_params[:role],
-                          observations: person_params[:observations])
-      end
     end
 end

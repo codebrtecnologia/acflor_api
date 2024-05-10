@@ -9,6 +9,8 @@ pt-BR:
       agenda_request: "Solicitação de Agenda"
       event: "Evento"
       attendance: "Participante"
+      eventbody: "Órgão do Evento"
+      event_body: "Órgão do Evento"
 
     attributes:
       category:

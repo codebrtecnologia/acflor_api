@@ -13,5 +13,6 @@ pt-BR:
     statuses: status
     events: eventos
     attendances: participantes
+    event_bodies: orgaos_evento
 
 

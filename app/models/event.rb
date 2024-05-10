@@ -3,8 +3,13 @@ class Event < ApplicationRecord
   acts_as_paranoid
 
   #RELATIONSHIPS
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :people, through: :attendances
+  accepts_nested_attributes_for :attendances
+
+  has_many :event_bodies, dependent: :destroy
+  has_many :public_bodies, through: :event_bodies
+  accepts_nested_attributes_for :event_bodies
 
   belongs_to :city, optional: true
   belongs_to :agenda_request, optional: true

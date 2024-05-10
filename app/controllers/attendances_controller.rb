@@ -65,7 +65,7 @@ class AttendancesController < ApplicationController
 
   def set_attendance
     begin
-      @attendance = Holiday.find(params[:id])
+      @attendance = Attendance.find(params[:id])
     rescue => e
       handle_exception(e, I18n.t("activerecord.models.attendance"), params[:id])
     end
