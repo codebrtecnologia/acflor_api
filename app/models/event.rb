@@ -17,6 +17,8 @@ class Event < ApplicationRecord
 
   #VALIDATIONS
   validates :name, :initial_date, :final_date, presence: true
+  validates :final_date, comparison: { greater_than: :initial_date, message: "deve ser maior que data inicial"}
+  validates :initial_date, comparison: { less_than: :final_date, message: "deve ser menor que data final"}
   validates :active, inclusion: { in: [true, false] }
 
   #SCOPES

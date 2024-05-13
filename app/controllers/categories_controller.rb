@@ -48,8 +48,6 @@ class CategoriesController < ApplicationController
         if category.destroy
           render json: { message: I18n.t("category.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end
@@ -65,8 +63,6 @@ class CategoriesController < ApplicationController
     def set_category
       begin
         @category = Category.find(params[:id])
-      rescue => e
-        handle_exception(e, I18n.t("activerecord.models.category"), params[:id])
       end
     end
 

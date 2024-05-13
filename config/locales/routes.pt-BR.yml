@@ -14,5 +14,8 @@ pt-BR:
     events: eventos
     attendances: participantes
     event_bodies: orgaos_evento
+    appointments: compromissos
+    situations: situacoes
+    repetitions: repeticoes
 
 

@@ -11,6 +11,12 @@ Rails.application.routes.draw do
         put '/:id/aprovar_solicitacao', to: 'agenda_requests#approve_request'
       end
     end
+    resources :appointments, defaults: {format: :json} do
+      collection do
+        get :situations
+        get :repetitions
+      end
+    end
     resources :attendances
     resources :categories
     resources :cities

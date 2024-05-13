@@ -11,6 +11,7 @@ pt-BR:
       attendance: "Participante"
       eventbody: "Órgão do Evento"
       event_body: "Órgão do Evento"
+      appointment: "Compromisso"
 
     attributes:
       category:
@@ -32,6 +33,7 @@ pt-BR:
         alternative_email: "email alternativo"
         category: "categoria"
         public_body: "órgão"
+        public_body_id: "órgão"
         active: "ativo"
       agenda_request:
         cellphone_number: "telefone"
@@ -42,10 +44,15 @@ pt-BR:
         infos: "informações"
         status: "status"
         city: "município"
+        city_id: "município"
         requester: "solicitante"
+        requester_id: "solicitante"
         requested: "solicitado"
+        requested_id: "solicitado"
         requesting_user: "usuário solicitante"
+        requesting_user_id: "usuário solicitante"
         approving_user: "usuário aprovador"
+        approving_user_id: "usuário aprovador"
         approval_date: "data de aprovação"
         base: "outro"
       event:
@@ -56,17 +63,35 @@ pt-BR:
         infos: "informações"
         local: "local"
         city: "cidade"
+        city_id: "cidade"
         agenda_request: "solicitação de agenda"
+        agenda_request_id: "solicitação de agenda"
         user: "usuário"
+        user_id: "usuário"
         active: "ativo"
       attendance:
         event: "evento"
+        event_id: "evento"
         person: "pessoa"
+        person_id: "pessoa"
         confirmed_presence: "presença confirmada"
         confirmation_date: "data da confirmação"
         attended_the_event: "compareceu ao evento"
         role: "função"
         observations: "observações"
+      appointment:
+        title: "título"
+        local: "local"
+        initial_date: "data inicial"
+        final_date: "data final"
+        situation: "situação"
+        repetition: "repetição"
+        user: "usuário"
+        user_id: "usuário"
+        city: "município"
+        city_id: "município"
+        person: "pessoa"
+        person_id: "pessoa"
 
     errors:
       models:
@@ -124,6 +149,20 @@ pt-BR:
           attributes:
             confirmed_presence:
               inclusion: "os valores aceitos são apenas 'true' ou 'false'"
+        appointment:
+          attributes:
+            title:
+              blank: "deve ser informado"
+            local:
+              blank: "deve ser informado"
+            initial_date:
+              blank: "deve ser informada"
+            final_date:
+              blank: "deve ser informada"
+            situation:
+              blank: "deve ser informada"
+            repetition:
+              blank: "deve ser informada"
 
     exceptions:
       not_found: "Não foi possível localizar %{class_name} com id(s): %{id}"

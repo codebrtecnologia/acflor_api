@@ -47,3 +47,9 @@ pt-BR:
     updated_success: "Participante atualizado com sucesso!"
     not_found: "Participante não encontrado"
     successful_destroyed: "Participante excluído com sucesso!"
+  appointment:
+    created_success: "Compromisso cadastrado com sucesso!"
+    created_error: "Erro no cadastro do participante."
+    updated_success: "Compromisso atualizado com sucesso!"
+    not_found: "Compromisso não encontrado"
+    successful_destroyed: "Compromisso excluído com sucesso!"

@@ -11,10 +11,17 @@ class Person < ApplicationRecord
 
   has_many :agenda_requests, foreign_key: 'requester_id', dependent: :restrict_with_exception
   has_many :agenda_requests, foreign_key: 'requested_id', dependent: :restrict_with_exception
+  has_many :appointments, dependent: :restrict_with_exception
 
   #VALIDATIONS
   validates :name, :email, presence: true
   validates :active, inclusion: { in: [true, false] }
+
+  validates :category_id, presence: true, numericality: { only_integer: true }
+  validate :validate_category_id
+
+  validates :public_body_id, presence: true, numericality: { only_integer: true }
+  validate :validate_public_body_id
 
   #SCOPES
   scope :filter_by_name, -> (name) {
@@ -36,4 +43,14 @@ class Person < ApplicationRecord
   scope :filter_by_category_id, -> (category_id) {
     where("category_id" => category_id)
   }
+
+  #CUSTOM METHODS
+  def validate_category_id
+    errors.add(:category_id, MSG_INVALID_ID) unless Category.exists?(self.category_id)
+  end
+
+  def validate_public_body_id
+    errors.add(:public_body_id, MSG_INVALID_ID) unless User.exists?(self.public_body_id)
+  end
+
 end

@@ -9,3 +9,16 @@ pt-BR:
       status:
         not_approved: "Não aprovado"
         approved: "Aprovado"
+    appointment:
+      situation:
+        scheduled: "Agendado"
+        accomplished: "Realizado"
+        canceled: "Cancelado"
+      repetition:
+        never: "Nunca"
+        everyday: "Todo dia"
+        every_business_day: "Todo dia útil"
+        every_week: "A cada semana"
+        every_two_weeks: "A cada duas semanas"
+        every_month: "Todo mês"
+        every_year: "Todo ano"
