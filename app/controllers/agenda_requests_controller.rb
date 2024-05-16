@@ -19,25 +19,17 @@ class AgendaRequestsController < ApplicationController
     begin
       @agenda_request = AgendaRequest.new(agenda_request_params)
 
-      if @agenda_request.save
+      if @agenda_request.save!
         render json: { status: "success", data: @agenda_request }, status: 201
-      else
-        render json: handle_unprocessable_entity(@agenda_request.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @agenda_request.update(agenda_request_params)
+      if @agenda_request.update!(agenda_request_params)
         render json: { status: "success", data: @agenda_request }
-      else
-        render json: handle_unprocessable_entity(@agenda_request.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -45,12 +37,8 @@ class AgendaRequestsController < ApplicationController
     agenda_request = AgendaRequest.find_by(id: params[:id])
 
     if agenda_request
-      begin
-        if agenda_request.destroy
-          render json: { message: I18n.t("agenda_request.successful_destroyed") }, status: 204
-        end
-      rescue => e
-        handle_exception(e)
+      if agenda_request.destroy!
+        render json: { message: I18n.t("agenda_request.successful_destroyed") }, status: 204
       end
     end
   end
@@ -59,11 +47,7 @@ class AgendaRequestsController < ApplicationController
     begin
       if @agenda_request.approve(current_user)
         head :no_content
-      else
-        render json: handle_unprocessable_entity(@agenda_request.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 

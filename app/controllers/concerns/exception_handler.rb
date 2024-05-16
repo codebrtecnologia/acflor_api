@@ -6,6 +6,8 @@ module ExceptionHandler
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :handle_unprocessable_entity
     rescue_from ActiveRecord::DeleteRestrictionError, with: :handle_delete_restriction_error
+    rescue_from ActionController::RoutingError, with: :handle_action_controller_routing_error
+    rescue_from ActionController::ParameterMissing, with: :handle_action_controller_parameter_missing
     # Adicionar outros tipos de exceções conforme necessário
   end
 
@@ -51,11 +53,19 @@ module ExceptionHandler
   end
 
   def handle_delete_restriction_error(exception)
-    render_error(500, ProblemType::ENTIDADE_EM_USO.uri, ProblemType::ENTIDADE_EM_USO.title,
+    render_error(409, ProblemType::ENTIDADE_EM_USO.uri, ProblemType::ENTIDADE_EM_USO.title,
                  'Delete Restriction Error', "Registro não pode ser deletado devido a restrição de dependência com outra entidade")
   end
 
-  # Adicione métodos para outros tipos de exceções aqui
+  def handle_action_controller_routing_error(exception)
+    render_error(400, ProblemType::MENSAGEM_INCOMPREENSIVEL.uri, ProblemType::MENSAGEM_INCOMPREENSIVEL.title,
+                 'Routing Error', "A rota informada não existe")
+  end
+
+  def handle_action_controller_parameter_missing(exception)
+    render_error(400, ProblemType::MENSAGEM_INCOMPREENSIVEL.uri, ProblemType::MENSAGEM_INCOMPREENSIVEL.title,
+                 'Parameter Missing', exception)
+  end
 
   def render_error(status, type, title, error, message)
     render json: {
@@ -78,7 +88,7 @@ module ExceptionHandler
       message = error.message
       error_fields << {
         name: I18n.t("activerecord.attributes.#{model_name}.#{attribute}"),
-        userMessage: message
+        message: message
       }
     end
     error_fields

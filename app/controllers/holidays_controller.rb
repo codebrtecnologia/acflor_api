@@ -19,7 +19,7 @@ class HolidaysController < ApplicationController
     begin
       @holiday = Holiday.new(holiday_params)
 
-      if @holiday.save
+      if @holiday.save!
         render json: { status: "success", data: @holiday }, status: 201
       else
         render json: handle_unprocessable_entity(@holiday.errors), status: :unprocessable_entity
@@ -31,13 +31,9 @@ class HolidaysController < ApplicationController
 
   def update
     begin
-      if @holiday.update(holiday_params)
+      if @holiday.update!(holiday_params)
         render json: { status: "success", data: @holiday }
-      else
-        render json: handle_unprocessable_entity(@holiday.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -46,11 +42,9 @@ class HolidaysController < ApplicationController
 
     if holiday
       begin
-        if holiday.destroy
+        if holiday.destroy!
           render json: { message: I18n.t("holiday.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

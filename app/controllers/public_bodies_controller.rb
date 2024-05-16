@@ -19,25 +19,17 @@ class PublicBodiesController < ApplicationController
     begin
       @public_body = PublicBody.new(public_body_params)
 
-      if @public_body.save
+      if @public_body.save!
         render json: { status: "success", data: @public_body }, status: 201
-      else
-        render json: handle_unprocessable_entity(@public_body.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @public_body.update(public_body_params)
+      if @public_body.update!(public_body_params)
         render json: { status: "success", data: @public_body }
-      else
-        render json: handle_unprocessable_entity(@public_body.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -46,11 +38,9 @@ class PublicBodiesController < ApplicationController
 
     if public_body
       begin
-        if public_body.destroy
+        if public_body.destroy!
           render json: { message: I18n.t("public_body.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

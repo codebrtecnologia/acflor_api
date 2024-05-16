@@ -2,9 +2,6 @@ class Appointment < ApplicationRecord
   include Filterable
   acts_as_paranoid
 
-  #CONSTANT
-  MSG_INVALID_ID = "ID informado não é válido"
-
   #RELATIONSHIPS
   belongs_to :user
   belongs_to :city
@@ -15,13 +12,13 @@ class Appointment < ApplicationRecord
   validates :initial_date, comparison: { less_than: :final_date, message: "deve ser menor que data final"}
 
   validates :person_id, presence: true, numericality: { only_integer: true }
-  validate :validate_person_id
+  validate_id :person_id
 
   validates :user_id, presence: true, numericality: { only_integer: true }
-  validate :validate_user_id
+  validate_id :user_id
 
   validates :city_id, presence: true, numericality: { only_integer: true }
-  validate :validate_city_id
+  validate_id :city_id
 
   validates :title, :local, :initial_date, :final_date, :situation, :repetition, presence: true
 
@@ -43,16 +40,5 @@ class Appointment < ApplicationRecord
   }, _prefix: :repetition
 
   #CUSTOM METHODS
-  def validate_person_id
-    errors.add(:person_id, MSG_INVALID_ID) unless Person.exists?(self.person_id)
-  end
-
-  def validate_user_id
-    errors.add(:user_id, MSG_INVALID_ID) unless User.exists?(self.user_id)
-  end
-
-  def validate_city_id
-    errors.add(:city_id, MSG_INVALID_ID) unless City.exists?(self.city_id)
-  end
 
 end

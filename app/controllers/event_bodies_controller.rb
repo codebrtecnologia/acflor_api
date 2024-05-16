@@ -19,25 +19,17 @@ class EventBodiesController < ApplicationController
     begin
       @event_body = EventBody.new(event_body_params)
 
-      if @event_body.save
+      if @event_body.save!
         render json: { status: "success", data: @event_body }, status: 201
-      else
-        render json: handle_unprocessable_entity(@event_body.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @event_body.update(event_body_params)
+      if @event_body.update!(event_body_params)
         render json: { status: "success", data: @event_body }
-      else
-        render json: handle_unprocessable_entity(@event_body.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -46,11 +38,9 @@ class EventBodiesController < ApplicationController
 
     if event_body
       begin
-        if event_body.destroy
+        if event_body.destroy!
           render json: { message: I18n.t("event_body.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

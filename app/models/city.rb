@@ -9,7 +9,6 @@ class City < ApplicationRecord
 
   #VALIDATIONS
   validates :name, presence: true
-  validates_associated :appointments
 
   #SCOPES
   scope :filter_by_name, -> (name) {

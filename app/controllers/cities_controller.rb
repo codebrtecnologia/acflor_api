@@ -19,25 +19,17 @@ class CitiesController < ApplicationController
     begin
       @city = City.new(city_params)
 
-      if @city.save
+      if @city.save!
         render json: { status: "success", data: @city }, status: 201
-      else
-        render json: handle_unprocessable_entity(@city.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @city.update(city_params)
+      if @city.update!(city_params)
         render json: { status: "success", data: @city }
-      else
-        render json: handle_unprocessable_entity(@city.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -46,11 +38,9 @@ class CitiesController < ApplicationController
 
     if city
       begin
-        if city.destroy
+        if city.destroy!
           render json: { message: I18n.t("city.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

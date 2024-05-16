@@ -1,53 +1,46 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy set_email]
 
-  # GET /users
-  # GET /users.json
   def index
     @users = User.all
+
+    @users_before_paginate = @users.size
+    @users = @users.then(&paginate)
+    @page_no = page_no
+    render(template: "users/index", formats: :json)
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show; end
+  def show
+    @users = User.find(params[:id])
+    render(template: "users/show", formats: :json)
+  end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     @user.password = params[:password] if params[:password].present?
 
-    if @user.save
-      render :show, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
+    if @user.save!
+      render json: { status: "success", data: @user }, status: 201
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    if @user.update(user_params)
-      render :show, status: :ok, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
+    begin
+      if @user.update!(user_params)
+        render json: { status: "success", data: @user }
+      end
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
-    @user.destroy
+    @user.destroy!
   end
 
-  # GET /users/list_names
   def list_names
     @users = User.select(:id, :name)
     render(template: 'users/list_names', formats: :json)
   end
 
-  # PATCH/PUT /users/set_email/1
-  # PATCH/PUT /users/set_email/1.json
   def set_email
     email = params[:email] if params[:email].present?
 
@@ -72,7 +65,6 @@ class UsersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
@@ -85,7 +77,6 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :person_id,
       :ability_profile_id
     )
   end

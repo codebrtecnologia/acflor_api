@@ -16,7 +16,7 @@ class AbilityResourcesController < ApplicationController
   def create
     @ability_resource = AbilityResource.new(ability_resource_params)
 
-    if @ability_resource.save
+    if @ability_resource.save!
       render :show, status: :created, location: @ability_resource
     else
       render json: @ability_resource.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class AbilityResourcesController < ApplicationController
   # PATCH/PUT /ability_resources/1
   # PATCH/PUT /ability_resources/1.json
   def update
-    if @ability_resource.update(ability_resource_params)
+    if @ability_resource.update!(ability_resource_params)
       render :show, status: :ok, location: @ability_resource
     else
       render json: @ability_resource.errors, status: :unprocessable_entity

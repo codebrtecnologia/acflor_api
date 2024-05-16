@@ -17,11 +17,11 @@ class Person < ApplicationRecord
   validates :name, :email, presence: true
   validates :active, inclusion: { in: [true, false] }
 
-  validates :category_id, presence: true, numericality: { only_integer: true }
-  validate :validate_category_id
+  validates :category_id, numericality: { only_integer: true }
+  validate_id :category_id
 
-  validates :public_body_id, presence: true, numericality: { only_integer: true }
-  validate :validate_public_body_id
+  validates :public_body_id, numericality: { only_integer: true }
+  validate_id :public_body_id
 
   #SCOPES
   scope :filter_by_name, -> (name) {
@@ -43,14 +43,5 @@ class Person < ApplicationRecord
   scope :filter_by_category_id, -> (category_id) {
     where("category_id" => category_id)
   }
-
-  #CUSTOM METHODS
-  def validate_category_id
-    errors.add(:category_id, MSG_INVALID_ID) unless Category.exists?(self.category_id)
-  end
-
-  def validate_public_body_id
-    errors.add(:public_body_id, MSG_INVALID_ID) unless User.exists?(self.public_body_id)
-  end
 
 end

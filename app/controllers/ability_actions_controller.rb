@@ -16,7 +16,7 @@ class AbilityActionsController < ApplicationController
   def create
     @ability_action = AbilityAction.new(ability_action_params)
 
-    if @ability_action.save
+    if @ability_action.save!
       render :show, status: :created, location: @ability_action
     else
       render json: @ability_action.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class AbilityActionsController < ApplicationController
   # PATCH/PUT /ability_actions/1
   # PATCH/PUT /ability_actions/1.json
   def update
-    if @ability_action.update(ability_action_params)
+    if @ability_action.update!(ability_action_params)
       render :show, status: :ok, location: @ability_action
     else
       render json: @ability_action.errors, status: :unprocessable_entity

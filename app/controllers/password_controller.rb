@@ -13,10 +13,10 @@ class PasswordController < ApplicationController
       email = current_user.email
     end
 
-    @user = User.find_by(email:)
+    @user = User.find_by(email)
 
     if @user.nil?
-      render json: { errors: I18n.t('devise_token_auth.passwords.user_not_found', email:) },
+      render json: { errors: I18n.t('devise_token_auth.passwords.user_not_found', email) },
              status: :not_found and return
     end
 
@@ -39,10 +39,10 @@ class PasswordController < ApplicationController
       email = current_user.email
     end
 
-    @user = User.find_by(email:)
+    @user = User.find_by(email)
 
     if @user.nil?
-      render json: { errors: I18n.t('devise_token_auth.passwords.user_not_found', email:) },
+      render json: { errors: I18n.t('devise_token_auth.passwords.user_not_found', email) },
              status: :not_found and return
     end
 

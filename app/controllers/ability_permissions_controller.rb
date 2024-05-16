@@ -16,7 +16,7 @@ class AbilityPermissionsController < ApplicationController
   def create
     @ability_permission = AbilityPermission.new(ability_permission_params)
 
-    if @ability_permission.save
+    if @ability_permission.save!
       render :show, status: :created, location: @ability_permission
     else
       render json: @ability_permission.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class AbilityPermissionsController < ApplicationController
   # PATCH/PUT /ability_permissions/1
   # PATCH/PUT /ability_permissions/1.json
   def update
-    if @ability_permission.update(ability_permission_params)
+    if @ability_permission.update!(ability_permission_params)
       render :show, status: :ok, location: @ability_permission
     else
       render json: @ability_permission.errors, status: :unprocessable_entity

@@ -19,25 +19,17 @@ class PeopleController < ApplicationController
     begin
       @person = Person.new(person_params)
 
-      if @person.save
+      if @person.save!
         render json: { status: "success", data: @person }, status: 201
-      else
-        render json: handle_unprocessable_entity(@person.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @person.update(person_params)
+      if @person.update!(person_params)
         render json: { status: "success", data: @person }
-      else
-        render json: handle_unprocessable_entity(@person.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
   def destroy
@@ -45,11 +37,9 @@ class PeopleController < ApplicationController
 
     if person
       begin
-        if person.destroy
+        if person.destroy!
           render json: { message: I18n.t("person.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

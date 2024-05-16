@@ -18,25 +18,17 @@ class CategoriesController < ApplicationController
     begin
       @category = Category.new(category_params)
 
-      if @category.save
+      if @category.save!
         render json: { status: "success", data: @category }, status: 201
-      else
-        render json: handle_unprocessable_entity(@category.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @category.update(category_params)
+      if @category.update!(category_params)
         render json: { status: "success", data: @category }
-      else
-        render json: handle_unprocessable_entity(@category.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -45,7 +37,7 @@ class CategoriesController < ApplicationController
 
     if category
       begin
-        if category.destroy
+        if category.destroy!
           render json: { message: I18n.t("category.successful_destroyed") }, status: 204
         end
       end

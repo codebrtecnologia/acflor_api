@@ -16,8 +16,22 @@ class AgendaRequest < ApplicationRecord
   }, _prefix: :status
 
   #VALIDATIONS
-  validates :cellphone_number, :email, :status, :requester, :requested,
-            :requesting_user, presence: true
+  validates :city_id, numericality: { only_integer: true }, allow_nil: true
+  validate_id :city_id
+
+  validates :requester_id, numericality: { only_integer: true }
+  validate_id :requester_id
+
+  validates :requested_id, numericality: { only_integer: true }
+  validate_id :requested_id
+
+  validates :requesting_user_id, numericality: { only_integer: true }, allow_nil: true
+  validate_id :requesting_user_id
+
+  validates :approving_user_id, numericality: { only_integer: true }, allow_nil: true
+  validate_id :approving_user_id
+
+  validates :cellphone_number, :email, :status, presence: true
 
   #SCOPES
   scope :filter_by_local, -> (local) {

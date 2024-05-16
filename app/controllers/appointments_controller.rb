@@ -29,8 +29,6 @@ class AppointmentsController < ApplicationController
     begin
       if @appointment.update!(appointment_params)
         render json: { status: "success", data: @appointment }
-      else
-        render json: handle_unprocessable_entity(@appointment.errors), status: :unprocessable_entity
       end
     end
   end
@@ -39,12 +37,8 @@ class AppointmentsController < ApplicationController
     appointment = Appointment.find_by(id: params[:id])
 
     if appointment
-      begin
-        if appointment.destroy
-          render json: { message: I18n.t("appointment.successful_destroyed") }, status: 204
-        end
-      rescue => e
-        handle_exception(e)
+      if appointment.destroy
+        render json: { message: I18n.t("appointment.successful_destroyed") }, status: 204
       end
     end
   end

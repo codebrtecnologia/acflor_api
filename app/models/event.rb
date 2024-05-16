@@ -16,6 +16,15 @@ class Event < ApplicationRecord
   belongs_to :user
 
   #VALIDATIONS
+  # validates :city_id, numericality: { only_integer: true }, allow_nil: true
+  # validate_id :city_id
+
+  validates :agenda_request_id, numericality: { only_integer: true }, allow_nil: true
+  validate_id :agenda_request_id
+
+  validates :user_id, numericality: { only_integer: true }
+  validate_id :user_id
+
   validates :name, :initial_date, :final_date, presence: true
   validates :final_date, comparison: { greater_than: :initial_date, message: "deve ser maior que data inicial"}
   validates :initial_date, comparison: { less_than: :final_date, message: "deve ser menor que data final"}

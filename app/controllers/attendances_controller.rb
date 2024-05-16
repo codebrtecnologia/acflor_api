@@ -19,25 +19,17 @@ class AttendancesController < ApplicationController
     begin
       @attendance = Attendance.new(attendance_params)
 
-      if @attendance.save
+      if @attendance.save!
         render json: { status: "success", data: @attendance }, status: 201
-      else
-        render json: handle_unprocessable_entity(@attendance.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
   def update
     begin
-      if @attendance.update(attendance_params)
+      if @attendance.update!(attendance_params)
         render json: { status: "success", data: @attendance }
-      else
-        render json: handle_unprocessable_entity(@attendance.errors), status: :unprocessable_entity
       end
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -49,8 +41,6 @@ class AttendancesController < ApplicationController
         if attendance.destroy
           render json: { message: I18n.t("attendance.successful_destroyed") }, status: 204
         end
-      rescue => e
-        handle_exception(e)
       end
     end
   end

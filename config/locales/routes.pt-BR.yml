@@ -1,21 +1,23 @@
 pt-BR:
   routes:
+    ability_actions: acoes
+    ability_permissions: permissoes
     ability_profiles: perfis
     ability_resources: recursos
-    ability_permissions: permissoes
+    agenda_requests: solicitacoes_agenda
+    appointments: compromissos
+    attendances: participantes
     categories: categorias
-    public_bodies: orgaos
     cities: municipios
+    events: eventos
+    event_bodies: orgaos_evento
     holidays: feriados
     holiday_types: tipos_feriados
     people: pessoas
-    agenda_requests: solicitacoes_agenda
-    statuses: status
-    events: eventos
-    attendances: participantes
-    event_bodies: orgaos_evento
-    appointments: compromissos
-    situations: situacoes
+    public_bodies: orgaos
     repetitions: repeticoes
+    situations: situacoes
+    statuses: status
+    users: usuarios
 
 

@@ -18,28 +18,26 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    if @event.save
+    if @event.save!
       render json: { status: "success", data: @event }, status: 201
     end
   end
 
   def update
-    if @event.update(event_params)
+    if @event.update!(event_params)
       render json: { status: "success", data: @event }
     end
   end
 
   def destroy
-    begin
-      @events = Event.find(params[:id])
+    event = Event.find_by(id: params[:id])
 
-      if @events.destroy
-        render json: { message: I18n.t("event.successful_destroyed") }, status: 204
+    if event
+      begin
+        if event.destroy!
+          render json: { message: I18n.t("event.successful_destroyed") }, status: 204
+        end
       end
-    rescue ActiveRecord::RecordNotFound => e
-      handle_resource_not_found(e)
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -47,13 +45,7 @@ class EventsController < ApplicationController
     begin
       if @event.activate
         head :no_content
-      else
-        render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
       end
-    rescue ActiveRecord::RecordNotFound => e
-      handle_resource_not_found(e)
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -61,13 +53,7 @@ class EventsController < ApplicationController
     begin
       if @event.disable
         head :no_content
-      else
-        render json: handle_unprocessable_entity(@event.errors), status: :unprocessable_entity
       end
-    rescue ActiveRecord::RecordNotFound => e
-      handle_resource_not_found(e)
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -87,10 +73,6 @@ class EventsController < ApplicationController
       @events_attendance = @events.attendances.find(params[:attendance_id])
 
       render(template: "events/show_events_attendance", formats: :json)
-    rescue ActiveRecord::RecordNotFound => e
-      handle_resource_not_found(e)
-    rescue => e
-      handle_exception(e)
     end
   end
 
@@ -110,10 +92,6 @@ class EventsController < ApplicationController
       @event_body = @events.event_bodies.find(params[:event_body_id])
 
       render(template: "events/show_event_body", formats: :json)
-    rescue ActiveRecord::RecordNotFound => e
-      handle_resource_not_found(e)
-    rescue => e
-      handle_exception(e)
     end
   end
 

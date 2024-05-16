@@ -16,7 +16,7 @@ class AbilityProfilesController < ApplicationController
   def create
     @ability_profile = AbilityProfile.new(ability_profile_params)
 
-    if @ability_profile.save
+    if @ability_profile.save!
       render :show, status: :created, location: @ability_profile
     else
       render json: @ability_profile.errors, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class AbilityProfilesController < ApplicationController
   # PATCH/PUT /ability_profiles/1
   # PATCH/PUT /ability_profiles/1.json
   def update
-    if @ability_profile.update(ability_profile_params)
+    if @ability_profile.update!(ability_profile_params)
       render :show, status: :ok, location: @ability_profile
     else
       render json: @ability_profile.errors, status: :unprocessable_entity
