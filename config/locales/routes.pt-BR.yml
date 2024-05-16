@@ -7,6 +7,7 @@ pt-BR:
     agenda_requests: solicitacoes_agenda
     appointments: compromissos
     attendances: participantes
+    notify_for_event: enviar_emails
     categories: categorias
     cities: municipios
     events: eventos
@@ -19,5 +20,4 @@ pt-BR:
     situations: situacoes
     statuses: status
     users: usuarios
-
 

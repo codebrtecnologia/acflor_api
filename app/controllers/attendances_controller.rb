@@ -20,6 +20,7 @@ class AttendancesController < ApplicationController
       @attendance = Attendance.new(attendance_params)
 
       if @attendance.save!
+        # @attendance.update(confirmation_token: generate_confirmation_token)
         render json: { status: "success", data: @attendance }, status: 201
       end
     end
@@ -45,9 +46,48 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def notify_for_event
+    begin
+      event = Event.find(params[:event_id])
+      if event.present?
+
+        attendances = Attendance.includes(:person).where(event_id: event.id, confirmed_presence: false)
+        if attendances.present?
+          attendances.each do |attendance|
+            AttendanceMailer.attendance_email(attendance.person, event, current_user).deliver_later
+          end
+          render json: { message: 'Email(s) enviado(s) com sucesso!' }, status: :ok
+        else
+          render json: { message: 'Todos os participantes desse evento já confirmaram presença!' }, status: :bad_request
+        end
+      end
+    end
+  end
+
+  def confirm
+    attendance = Attendance.find_by(confirmation_token: params[:token])
+
+    if attendance
+      if attendance.confirmed_presence == true && attendance.confirmation_date != nil
+        render json: { status: 'error', message: 'Presença já confirmada.' }, status: :unprocessable_entity
+      elsif !attendance.confirmed_presence && attendance.confirmation_token_expires_at && attendance.confirmation_token_expires_at > Time.zone.now
+        attendance.update(confirmed_presence: true, confirmation_date: Time.zone.now)
+        render json: { status: 'success', message: 'Presença confirmada com sucesso.' }
+      else
+        render json: { status: 'error', message: 'Token inválido ou expirado.' }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "Token Inválido" }, status: :not_found
+    end
+  end
+
   private
 
   FILTER_PARAMS = [:event_id, :person_id, :confirmed_presence, :attended_the_event, :role]
+
+  def generate_confirmation_token
+    SecureRandom.urlsafe_base64(20)
+  end
 
   def load_attendances
     @attendances = Attendance.filter(params.slice(*FILTER_PARAMS))
@@ -70,7 +110,8 @@ class AttendancesController < ApplicationController
             :confirmation_date,
             :attended_the_event,
             :role,
-            :observations
+            :observations,
+            :confirmation_token
           )
   end
 end

@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :agenda_requests, foreign_key: 'requesting_user_id', dependent: :restrict_with_exception
   has_many :agenda_requests, foreign_key: 'approving_user_id', dependent: :restrict_with_exception
   has_many :appointments, dependent: :restrict_with_exception
+  has_many :email_histories, dependent: :restrict_with_exception
 
   validates :name, presence: true
 end

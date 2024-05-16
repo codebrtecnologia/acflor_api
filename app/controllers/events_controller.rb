@@ -18,6 +18,12 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
+    if @event.attendances.present?
+      @event.attendances.each do |attendance|
+        attendance.confirmation_token = SecureRandom.urlsafe_base64
+      end
+    end
+
     if @event.save!
       render json: { status: "success", data: @event }, status: 201
     end
@@ -109,6 +115,10 @@ class EventsController < ApplicationController
       rescue => e
         handle_exception(e, I18n.t("activerecord.models.event"), params[:id])
       end
+    end
+
+    def generate_confirmation_token
+      SecureRandom.urlsafe_base64(20)
     end
 
     def event_params

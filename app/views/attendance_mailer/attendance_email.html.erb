@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação de Presença</title>
+  <style>
+     body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+     }
+     .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+     h2 {
+        color: #333;
+     }
+     p {
+        margin-bottom: 20px;
+     }
+     .event-info {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        padding: 10px;
+     }
+     .button {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+     }
+     .signature {
+        margin-top: 40px;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+        font-size: 14px;
+        color: #666;
+     }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Olá, <%= @person.name %></h2>
+  <p>Você está recebendo este e-mail porque está cadastrado como participante no seguinte evento:</p>
+  <div class="event-info">
+    <p><strong>Nome do Evento:</strong> <%= @event.name %></p>
+    <p><strong>Local do Evento:</strong> <%= @event.local %></p>
+    <p><strong>Data Inicial:</strong> <%= @event.initial_date.strftime("%d/%m/%Y %H:%M") %></p>
+    <p><strong>Data Final:</strong> <%= @event.final_date.strftime("%d/%m/%Y %H:%M") %></p>
+    <p><strong>Observações:</strong> <%= @event.observations %></p>
+  </div>
+  <p>Para confirmar sua presença no evento, clique no botão abaixo:</p>
+  <a href="<%= confirmar_presenca_attendances_url(token: @token) %>" class="button">Confirmar Presença</a>
+  <p>Se o botão acima não funcionar, você pode confirmar sua presença clicando <a href="<%= confirmar_presenca_attendances_url(token: @token) %>">aqui</a>.</p>
+  <p>Atenção: o link acima ficará válido por 48 horas.</p>
+  <p>Agradecemos antecipadamente pela sua atenção!</p>
+  <div class="signature">
+    <p>Atenciosamente,<br>
+      Governo do Estado do Ceará.</p>
+  </div>
+</div>
+</body>
+</html>

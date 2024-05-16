@@ -35,18 +35,32 @@ Rails.application.configure do
 
   # Email settings.
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3005 }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_caching = false
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_caching = false
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_options = { from: ENV.fetch('EMAIL_FROM') }
+
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_options = { from: ENV.fetch('EMAIL_FROM') }
+  config.action_mailer.smtp_settings = {
+    user_name: 'apikey', # Isso deve ser literalmente 'apikey'
+    password: ENV.fetch('EMAIL_KEY'), # Defina a chave API em uma variável de ambiente
+    domain: 'http://localhost:3005', # Substitua pelo seu domínio
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'http://localhost:3005' }
 
   # etice ok
-  config.action_mailer.smtp_settings = {
-    address: ENV.fetch('EMAIL_ADDRESS'),
-    port: ENV.fetch('EMAIL_PORT'),
-    enable_starttls_auto: ENV['EMAIL_ENABLE_STARTTLS_AUTO'] == 'true',
-    openssl_verify_mode: ENV.fetch('EMAIL_OPENSSL_VERIFY_MODE')
-  }
+  # config.action_mailer.smtp_settings = {
+  #   address: ENV.fetch('EMAIL_ADDRESS'),
+  #   port: ENV.fetch('EMAIL_PORT'),
+  #   enable_starttls_auto: ENV['EMAIL_ENABLE_STARTTLS_AUTO'] == 'true',
+  #   openssl_verify_mode: ENV.fetch('EMAIL_OPENSSL_VERIFY_MODE')
+  # }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -71,4 +85,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  # config.active_job.queue_adapter = :async
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3005 }
 end

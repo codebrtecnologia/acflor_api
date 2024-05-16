@@ -17,7 +17,12 @@ Rails.application.routes.draw do
         get :repetitions
       end
     end
-    resources :attendances
+    resources :attendances do
+      collection do
+        post :notify_for_event
+        get 'confirmar_presenca', to: 'attendances#confirm'
+      end
+    end
     resources :categories
     resources :cities
     resources :events, defaults: {format: :json} do

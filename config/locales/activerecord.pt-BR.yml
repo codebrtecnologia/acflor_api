@@ -13,6 +13,7 @@ pt-BR:
       event_body: "Órgão do Evento"
       appointment: "Compromisso"
       user: "Usuário"
+      email_history: "Histórico de Email"
 
     attributes:
       category:
@@ -84,6 +85,9 @@ pt-BR:
         attended_the_event: "compareceu ao evento"
         role: "função"
         observations: "observações"
+        confirmation_token: "token de confirmação"
+        token_expiry: "expiração do token"
+        email_sent_count: "quantidade de emails enviados"
       appointment:
         title: "título"
         local: "local"
@@ -100,6 +104,15 @@ pt-BR:
       user:
         password: "senha"
         email: "email"
+      email_history:
+        attendance: "participante"
+        attendance_id: "participante"
+        user: "usuário"
+        user_id: "usuário"
+        subject: "assunto"
+        sent_at: "enviado em"
+        confirmation_token: "token de confirmação"
+        token_expiry: "expiração do token"
 
     errors:
       models:
