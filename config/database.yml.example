@@ -2,33 +2,25 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  port: 5432
-  username: postgres
-  password: postgres
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
-  host: localhost
-  username: postgres
-  password: postgres
-  database: empodera_api_dev
-  schema_search_path: public
+  database: <%= ENV['DB_DATABASE_DEV'] %>
+  schema_search_path: <%= ENV['DB_SCHEMA_DEV'] %>
   database_tasks: true
 
 production:
   <<: *default
-  host: localhost
-  username: postgres
-  password: postgres
-  database: empodera_api_prod
-  schema_search_path: public
+  database: <%= ENV['DB_DATABASE_PROD'] %>
+  schema_search_path: <%= ENV['DB_SCHEMA_PROD'] %>
   database_tasks: true
 
 test:
   <<: *default
-  host: localhost
-  username: postgres
-  password: postgres
-  database: empodera_api_test
-  schema_search_path: public
+  database: <%= ENV['DB_DATABASE_TEST'] %>
+  schema_search_path: <%= ENV['DB_SCHEMA_TEST'] %>
   database_tasks: true

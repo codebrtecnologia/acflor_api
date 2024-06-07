@@ -18,7 +18,7 @@ usuário.
 
 # Entrar na pasta do projeto
 
-`cd empodera-api`
+`cd ipe-backend-novo`
 
 # Instalar as Gems
 
@@ -29,6 +29,10 @@ usuário.
 `cp .env.example .env`
 
 # Configurar as varáveis dentro do arquivo ".env", conforme o ambiente
+
+# Copiar "database.yml.example" para "database.yml"
+
+`cp config/database.yml.example config/database.yml`
 
 # Criar banco de dados
 
