@@ -11,7 +11,7 @@ class EventBodiesController < ApplicationController
   end
 
   def show
-    @event_bodies = Attendance.find(params[:id])
+    @event_bodies = EventBody.find(params[:id])
     render(template: "event_bodies/show", formats: :json)
   end
 
@@ -34,7 +34,7 @@ class EventBodiesController < ApplicationController
   end
 
   def destroy
-    event_body = Attendance.find_by(id: params[:id])
+    event_body = EventBody.find_by(id: params[:id])
 
     if event_body
       begin

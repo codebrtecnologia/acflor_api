@@ -47,6 +47,12 @@ pt-BR:
     updated_success: "Participante atualizado com sucesso!"
     not_found: "Participante não encontrado"
     successful_destroyed: "Participante excluído com sucesso!"
+  event_date:
+    created_success: "Data do Evento cadastrada com sucesso!"
+    created_error: "Erro no cadastro da data do evento."
+    updated_success: "Data do Evento atualizada com sucesso!"
+    not_found: "Data do Evento não encontrad"
+    successful_destroyed: "Data do Evento excluída com sucesso!"
   appointment:
     created_success: "Compromisso cadastrado com sucesso!"
     created_error: "Erro no cadastro do participante."

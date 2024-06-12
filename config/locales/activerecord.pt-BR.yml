@@ -11,6 +11,7 @@ pt-BR:
       attendance: "Participante"
       eventbody: "Órgão do Evento"
       event_body: "Órgão do Evento"
+      event_date: "Data do Evento"
       appointment: "Compromisso"
       user: "Usuário"
       email_history: "Histórico de Email"
@@ -60,8 +61,6 @@ pt-BR:
         base: "outro"
       event:
         name: "nome"
-        initial_date: "data inicial"
-        final_date: "data final"
         observations: "observações"
         infos: "informações"
         local: "local"
@@ -72,9 +71,14 @@ pt-BR:
         user: "usuário"
         user_id: "usuário"
         active: "ativo"
+        event_dates: "Datas do Evento"
+        event_date:
+          date: "Data"
+          start_time: "Hora de Início"
+          end_time: "Hora de Término"
         attendances:
-          event_id: evento
-          person_id: pessoa
+          event_id: "evento"
+          person_id: "pessoa"
       attendance:
         event: "evento"
         event_id: "evento"
@@ -88,6 +92,11 @@ pt-BR:
         confirmation_token: "token de confirmação"
         token_expiry: "expiração do token"
         email_sent_count: "quantidade de emails enviados"
+      event_date:
+        event_id: "evento"
+        date: "data"
+        start_time: "hora inicial"
+        end_time: "hora final"
       appointment:
         title: "título"
         local: "local"
@@ -160,12 +169,16 @@ pt-BR:
           attributes:
             name:
               blank: "deve ser informado"
-            initial_date:
-              blank: "deve ser informado"
-            final_date:
-              blank: "deve ser informado"
             active:
               inclusion: "os valores aceitos são apenas 'true' ou 'false'"
+        event_date:
+          attributes:
+            date:
+              blank: "deve ser informado"
+            start_time:
+              blank: "deve ser informado"
+            end_time:
+              blank: "deve ser informado"
         attendance:
           attributes:
             confirmed_presence:

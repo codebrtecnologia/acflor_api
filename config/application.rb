@@ -18,6 +18,7 @@ module IpeApi
     # config.i18n.default_locale = 'pt-BR'
 
     config.time_zone = "America/Fortaleza"
+    config.active_record.default_timezone = :local
     config.i18n.default_locale = :"pt-BR"
     config.i18n.available_locales = ["pt-BR"]
     I18n.enforce_available_locales = false

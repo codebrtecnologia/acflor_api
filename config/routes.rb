@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get '/:id/participantes/:attendance_id', to: 'events#show_attendance_by_event'
         get '/:id/orgaos', to: 'events#get_all_event_bodies_by_event'
         get '/:id/orgaos/:event_body_id', to: 'events#show_event_body_by_event'
+        get '/:id/datas', to: 'events#get_all_event_dates_by_event'
+        get '/:id/datas/:event_date_id', to: 'events#show_event_date_by_event'
         put '/:id/ativar_evento', to: 'events#activate_event'
         put '/:id/inativar_evento', to: 'events#disable_event'
       end

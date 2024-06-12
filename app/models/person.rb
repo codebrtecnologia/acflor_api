@@ -17,12 +17,6 @@ class Person < ApplicationRecord
   validates :name, :email, presence: true
   validates :active, inclusion: { in: [true, false] }
 
-  validates :category_id, numericality: { only_integer: true }
-  validate_id :category_id
-
-  validates :public_body_id, numericality: { only_integer: true }
-  validate_id :public_body_id
-
   #SCOPES
   scope :filter_by_name, -> (name) {
     where("name ILIKE ?", "%#{name}%")

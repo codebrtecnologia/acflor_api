@@ -1,11 +1,19 @@
 json.events do
   json.id @events.id
   json.name @events.name
-  json.initial_date @events.initial_date
-  json.final_date @events.final_date
   json.observations @events.observations
   json.infos @events.infos
   json.local @events.local
+  json.dates do
+    @event.event_dates.each do |event_date|
+      json.child! do
+        json.event_id @event.id
+        json.date event_date.date.strftime("%d/%m/%Y")
+        json.start_time event_date.start_time.strftime("%H:%M:%S")
+        json.end_time event_date.end_time.strftime("%H:%M:%S")
+      end
+    end
+  end
   json.city do
     json.id @events&.city&.id
     json.name @events&.city&.name

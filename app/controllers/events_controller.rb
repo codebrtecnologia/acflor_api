@@ -101,9 +101,28 @@ class EventsController < ApplicationController
     end
   end
 
+  def get_all_event_dates_by_event
+    @events = Event.find(params[:id])
+
+    @event_dates_before_paginate = @events.event_dates.size
+    @event_dates = @events.event_dates.then(&paginate)
+    @page_no = page_no
+
+    render(template: "events/index_event_dates", formats: :json)
+  end
+
+  def show_event_date_by_event
+    begin
+      @events = Event.find(params[:id])
+      @event_date = @events.event_dates.find(params[:event_date_id])
+
+      render(template: "events/show_event_date", formats: :json)
+    end
+  end
+
   private
-    FILTER_PARAMS = [:name, :initial_date, :final_date, :local,
-                     :city_id, :agenda_request_id, :user_id, :active]
+    FILTER_PARAMS = [:name, :local, :city_id, :agenda_request_id, :user_id, :active, :date, :initial_date, :final_date,
+                     :start_time, :end_time]
 
     def load_events
       @events = Event.filter(params.slice(*FILTER_PARAMS)).order("LOWER(name)")
@@ -112,8 +131,6 @@ class EventsController < ApplicationController
     def set_event
       begin
         @event = Event.find(params[:id])
-      rescue => e
-        handle_exception(e, I18n.t("activerecord.models.event"), params[:id])
       end
     end
 
@@ -125,8 +142,6 @@ class EventsController < ApplicationController
       params.require(:event)
             .permit(
               :name,
-              :initial_date,
-              :final_date,
               :observations,
               :infos,
               :local,
@@ -148,6 +163,13 @@ class EventsController < ApplicationController
                 :id,
                 :event_id,
                 :public_body_id
+              ],
+              event_dates_attributes: [
+                :id,
+                :event_id,
+                :date,
+                :start_time,
+                :end_time
               ]
             )
     end
