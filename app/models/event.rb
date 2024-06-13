@@ -97,7 +97,7 @@ class Event < ApplicationRecord
 
   def must_have_at_least_one_event_date
     if event_dates.empty? || event_dates.all? { |event_date| event_date.marked_for_destruction? }
-      errors.add(:event_dates, "Ao menos uma data com horário inicial e horário final deve ser informada")
+      errors.add(:event_date, "Ao menos uma data com horário inicial e horário final deve ser informada")
     end
   end
 

@@ -71,8 +71,8 @@ pt-BR:
         user: "usuário"
         user_id: "usuário"
         active: "ativo"
-        event_dates: "Datas do Evento"
-        event_date:
+        event_date: "Datas do Evento"
+        event_dates:
           date: "Data"
           start_time: "Hora de Início"
           end_time: "Hora de Término"
