@@ -125,6 +125,7 @@ class EventsController < ApplicationController
                      :start_time, :end_time]
 
     def load_events
+      @events = Event.filter_by_user_id(current_user.id)
       @events = Event.filter(params.slice(*FILTER_PARAMS)).order("LOWER(name)")
     end
 
