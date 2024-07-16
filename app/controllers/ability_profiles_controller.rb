@@ -9,7 +9,10 @@ class AbilityProfilesController < ApplicationController
 
   # GET /ability_profiles/1
   # GET /ability_profiles/1.json
-  def show; end
+  def show
+    @ability_profiles = AbilityProfile.find(params[:id])
+    render(template: "ability_profiles/show", formats: :json)
+  end
 
   # POST /ability_profiles
   # POST /ability_profiles.json

@@ -59,3 +59,6 @@ pt-BR:
     updated_success: "Compromisso atualizado com sucesso!"
     not_found: "Compromisso não encontrado"
     successful_destroyed: "Compromisso excluído com sucesso!"
+  errors:
+    messages:
+      method_not_allowed: "Não permitido"
