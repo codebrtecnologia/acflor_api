@@ -15,6 +15,9 @@ pt-BR:
       appointment: "Compromisso"
       user: "Usuário"
       email_history: "Histórico de Email"
+      ability_profile: "Perfil"
+      abilityprofile: "Perfil"
+      ability_permission: "Permissão"
 
     attributes:
       category:

@@ -121,12 +121,12 @@ class EventsController < ApplicationController
   end
 
   private
-    FILTER_PARAMS = [:name, :local, :city_id, :agenda_request_id, :user_id, :active, :date, :initial_date, :final_date,
+    FILTER_PARAMS = [:name, :local, :city_id, :agenda_request_id, :active, :date, :initial_date, :final_date,
                      :start_time, :end_time]
 
     def load_events
-      @events = Event.filter_by_user_id(current_user.id)
       @events = Event.filter(params.slice(*FILTER_PARAMS)).order("LOWER(name)")
+      @events = @events.filter_by_user_id(current_user&.id)
     end
 
     def set_event
