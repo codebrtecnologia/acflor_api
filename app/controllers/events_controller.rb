@@ -47,78 +47,78 @@ class EventsController < ApplicationController
     end
   end
 
-  def activate_event
-    begin
-      if @event.activate
-        head :no_content
-      end
-    end
-  end
+  # def activate_event
+  #   begin
+  #     if @event.activate
+  #       head :no_content
+  #     end
+  #   end
+  # end
 
-  def disable_event
-    begin
-      if @event.disable
-        head :no_content
-      end
-    end
-  end
+  # def disable_event
+  #   begin
+  #     if @event.disable
+  #       head :no_content
+  #     end
+  #   end
+  # end
 
-  def get_all_attendances_by_event
-    @events = Event.find(params[:id])
+  # def get_all_attendances_by_event
+  #   @events = Event.find(params[:id])
 
-    @events_attendances_before_paginate = @events.attendances.size
-    @events_attendances = @events.attendances.then(&paginate)
-    @page_no = page_no
+  #   @events_attendances_before_paginate = @events.attendances.size
+  #   @events_attendances = @events.attendances.then(&paginate)
+  #   @page_no = page_no
 
-    render(template: "events/index_events_attendances", formats: :json)
-  end
+  #   render(template: "events/index_events_attendances", formats: :json)
+  # end
 
-  def show_attendance_by_event
-    begin
-      @events = Event.find(params[:id])
-      @events_attendance = @events.attendances.find(params[:attendance_id])
+  # def show_attendance_by_event
+  #   begin
+  #     @events = Event.find(params[:id])
+  #     @events_attendance = @events.attendances.find(params[:attendance_id])
 
-      render(template: "events/show_events_attendance", formats: :json)
-    end
-  end
+  #     render(template: "events/show_events_attendance", formats: :json)
+  #   end
+  # end
 
-  def get_all_event_bodies_by_event
-    @events = Event.find(params[:id])
+  # def get_all_event_bodies_by_event
+  #   @events = Event.find(params[:id])
 
-    @event_bodies_before_paginate = @events.event_bodies.size
-    @event_bodies = @events.event_bodies.then(&paginate)
-    @page_no = page_no
+  #   @event_bodies_before_paginate = @events.event_bodies.size
+  #   @event_bodies = @events.event_bodies.then(&paginate)
+  #   @page_no = page_no
 
-    render(template: "events/index_event_bodies", formats: :json)
-  end
+  #   render(template: "events/index_event_bodies", formats: :json)
+  # end
 
-  def show_event_body_by_event
-    begin
-      @events = Event.find(params[:id])
-      @event_body = @events.event_bodies.find(params[:event_body_id])
+  # def show_event_body_by_event
+  #   begin
+  #     @events = Event.find(params[:id])
+  #     @event_body = @events.event_bodies.find(params[:event_body_id])
 
-      render(template: "events/show_event_body", formats: :json)
-    end
-  end
+  #     render(template: "events/show_event_body", formats: :json)
+  #   end
+  # end
 
-  def get_all_event_dates_by_event
-    @events = Event.find(params[:id])
+  # def get_all_event_dates_by_event
+  #   @events = Event.find(params[:id])
 
-    @event_dates_before_paginate = @events.event_dates.size
-    @event_dates = @events.event_dates.then(&paginate)
-    @page_no = page_no
+  #   @event_dates_before_paginate = @events.event_dates.size
+  #   @event_dates = @events.event_dates.then(&paginate)
+  #   @page_no = page_no
 
-    render(template: "events/index_event_dates", formats: :json)
-  end
+  #   render(template: "events/index_event_dates", formats: :json)
+  # end
 
-  def show_event_date_by_event
-    begin
-      @events = Event.find(params[:id])
-      @event_date = @events.event_dates.find(params[:event_date_id])
+  # def show_event_date_by_event
+  #   begin
+  #     @events = Event.find(params[:id])
+  #     @event_date = @events.event_dates.find(params[:event_date_id])
 
-      render(template: "events/show_event_date", formats: :json)
-    end
-  end
+  #     render(template: "events/show_event_date", formats: :json)
+  #   end
+  # end
 
   private
     FILTER_PARAMS = [:name, :local, :city_id, :agenda_request_id, :active, :date, :initial_date, :final_date,

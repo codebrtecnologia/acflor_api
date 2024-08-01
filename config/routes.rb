@@ -6,26 +6,14 @@ Rails.application.routes.draw do
     resources :ability_permissions
     resources :ability_profiles
     resources :ability_resources
-    resources :agenda_requests, defaults: {format: :json} do
-      collection do
-        get :statuses
-        put '/:id/aprovar_solicitacao', to: 'agenda_requests#approve_request'
-      end
-    end
+    resources :courses
+    resources :entities
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations
         get :repetitions
       end
     end
-    resources :attendances do
-      collection do
-        post :notify_for_event
-        get 'confirmar_presenca', to: 'attendances#confirm'
-      end
-    end
-    resources :categories
-    resources :cities
     resources :events, defaults: {format: :json} do
       collection do
         get '/:id/participantes', to: 'events#get_all_attendances_by_event'
@@ -38,14 +26,6 @@ Rails.application.routes.draw do
         put '/:id/inativar_evento', to: 'events#disable_event'
       end
     end
-    resources :event_bodies
-    resources :holidays, defaults: {format: :json} do
-      collection do
-        get :holiday_types
-      end
-    end
-    resources :people
-    resources :public_bodies
     resources :users do
       collection do
         get '/list_names', to: 'users#list_names'

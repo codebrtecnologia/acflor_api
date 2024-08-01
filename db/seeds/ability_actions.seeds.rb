@@ -15,20 +15,6 @@ ability_resource = AbilityResource.find_by(name: 'users')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'list_names')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'set_email')
 
-ability_resource = AbilityResource.find_by(name: 'holidays')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'holiday_types')
-
-ability_resource = AbilityResource.find_by(name: 'agenda_requests')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'statuses')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'approve_request')
-
 ability_resource = AbilityResource.find_by(name: 'events')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'activate_event')
 AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'disable_event')
-
-ability_resource = AbilityResource.find_by(name: 'appointments')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'situations')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'repetitions')
-
-ability_resource = AbilityResource.find_by(name: 'attendances')
-AbilityAction.find_or_create_by(ability_resource_id: ability_resource.id, name: 'notify_for_event')

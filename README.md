@@ -68,3 +68,4 @@ enviados no cabeçalho das requisições, juntamente com o **UID** (e-mail) do u
 
 Url de autenticação:
 `{{server}}/auth/sign_in?email={{email}}&password={{password}}`
+# acflor_api

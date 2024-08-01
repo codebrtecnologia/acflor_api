@@ -9,4 +9,4 @@ load 'db/seeds/ability_profile_user.seeds.rb'
 
 load 'db/seeds/admin_user.seeds.rb'
 
-load 'db/seeds/cities.seeds.rb'
+# load 'db/seeds/cities.seeds.rb'

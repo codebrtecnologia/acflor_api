@@ -40,19 +40,19 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default_options = { from: ENV.fetch('EMAIL_FROM') }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: 'apikey', # Isso deve ser literalmente 'apikey'
-    password: ENV.fetch('EMAIL_KEY'), # Defina a chave API em uma variável de ambiente
-    domain: 'http://localhost:3005', # Substitua pelo seu domínio
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'http://localhost:3005' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   user_name: 'apikey', # Isso deve ser literalmente 'apikey'
+  #   password: ENV.fetch('EMAIL_KEY'), # Defina a chave API em uma variável de ambiente
+  #   domain: 'http://localhost:3005', # Substitua pelo seu domínio
+  #   address: 'smtp.sendgrid.net',
+  #   port: 587,
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { host: 'http://localhost:3005' }
 
   # etice ok
   # config.action_mailer.smtp_settings = {
