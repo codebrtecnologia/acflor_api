@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :entities
     resources :diciplines
     resources :deficiencies
+    resources :entity_addresses
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations
