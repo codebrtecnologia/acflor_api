@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :ability_resources
     resources :courses
     resources :entities
+    resources :diciplines
+    resources :deficiencies
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations

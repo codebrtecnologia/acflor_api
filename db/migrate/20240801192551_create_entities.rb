@@ -3,8 +3,7 @@ class CreateEntities < ActiveRecord::Migration[7.0]
     create_table :entities do |t|
       t.string :name
       t.string :responsible
-      t.string :address
-      t.string :phone
+      t.string :telephone
       t.string :email
       t.datetime :deleted_at
       

@@ -67,6 +67,6 @@ class EntitiesController < ApplicationController
   end
 
   def entity_params
-    params.require(:entity).permit(:name, :responsible, :address, :phone, :email)
+    params.require(:entity).permit(:name, :responsible, :telephone, :email)
   end
 end
