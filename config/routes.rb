@@ -1,7 +1,5 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  resources :teams
-  resources :teachers
   localized do
     mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], controllers: { sessions: "sessions" }
     resources :ability_actions
@@ -13,6 +11,9 @@ Rails.application.routes.draw do
     resources :diciplines
     resources :deficiencies
     resources :entity_addresses
+    resources :user_addresses
+    resources :teams
+    resources :teachers
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations
