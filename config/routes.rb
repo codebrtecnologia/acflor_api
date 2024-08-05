@@ -1,6 +1,6 @@
+# config/routes.rb
 Rails.application.routes.draw do
   localized do
-    # mount_devise_token_auth_for 'User', at: 'auth'
     mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks], controllers: { sessions: "sessions" }
     resources :ability_actions
     resources :ability_permissions
