@@ -66,7 +66,6 @@ class TeamStudentsController < ApplicationController
       end
     end
 
-    # Only allow a list of trusted parameters through.
     def team_student_params
       params.require(:team_student).permit(:student_id, :team_id, :registration_number)
     end
