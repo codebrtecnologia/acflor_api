@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :user_addresses
     resources :teams
     resources :teachers
+    resources :classes
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations
