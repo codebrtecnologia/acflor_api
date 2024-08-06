@@ -12,7 +12,7 @@ class PresencesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create presence" do
     assert_difference("Presence.count") do
-      post presences_url, params: { presence: {  } }, as: :json
+      post presences_url, params: { presence: { classe_id: @presence.classe_id, justification: @presence.justification, presence: @presence.presence, student_id: @presence.student_id, team_id: @presence.team_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class PresencesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update presence" do
-    patch presence_url(@presence), params: { presence: {  } }, as: :json
+    patch presence_url(@presence), params: { presence: { classe_id: @presence.classe_id, justification: @presence.justification, presence: @presence.presence, student_id: @presence.student_id, team_id: @presence.team_id } }, as: :json
     assert_response :success
   end
 
