@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :team_student_diciplines
     resources :presences
     resources :entity_courses
+    resources :academic_events
     resources :appointments, defaults: {format: :json} do
       collection do
         get :situations
