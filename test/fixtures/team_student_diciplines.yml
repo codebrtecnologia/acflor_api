@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_student: one
+  dicipline: one
+  dicipline_status: one
+  active: false
+
+two:
+  team_student: two
+  dicipline: two
+  dicipline_status: two
+  active: false
